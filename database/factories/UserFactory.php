@@ -18,8 +18,10 @@ class UserFactory extends Factory
             'name' => $this->faker->name(),
             'email' => $this->faker->unique()->safeEmail(),
             'email_verified_at' => now(),
-            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+            'password' => bcrypt('1234'), // password
             'remember_token' => Str::random(10),
+            'img' => 'https://empresas.blogthinkbig.com/wp-content/uploads/2019/11/Imagen3-245003649.jpg?w=800',
+            'ubicacion' => 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d62920.19926417366!2d123.',
         ];
     }
 

@@ -15,9 +15,9 @@ class CreateMensajeTable extends Migration
     {
         Schema::create('mensajes', function (Blueprint $table) {
             $table->id()->autoIncrement();
-            $table->foreignId('emisor_id')->constrained('users');
-            $table->foreignId('receptor_id')->constrained('users');
-            $table->foreignId('product_id')->constrained('products');
+            $table->foreignId('emisor_id')->constrained('users')->onDelete('cascade');
+            $table->foreignId('receptor_id')->constrained('users')->onDelete('cascade');
+            $table->foreignId('product_id')->constrained('products')->onDelete('cascade');
             $table->string('contenido');
             $table->timestamps();
         });

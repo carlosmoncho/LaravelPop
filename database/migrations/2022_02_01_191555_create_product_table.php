@@ -19,8 +19,8 @@ class CreateProductTable extends Migration
             $table->string('nombre');
             $table->string('descripcion');
             $table->boolean('sale');
-            $table->foreignId('comprador_id')->constrained('users')->nullable();;
-            $table->foreignId('user_id')->constrained('users');
+            $table->foreignId('comprador_id')->nullable()->constrained('users')->onDelete('cascade');
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->float('precio', 10, 2);
             $table->timestamps();
         });

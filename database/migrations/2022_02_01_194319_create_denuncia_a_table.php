@@ -15,8 +15,8 @@ class CreateDenunciaATable extends Migration
     {
         Schema::create('denuncia_a', function (Blueprint $table) {
             $table->id()->autoIncrement();
-            $table->foreignId('user_id')->constrained('users');
-            $table->foreignId('product_id')->constrained('products');
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
+            $table->foreignId('product_id')->constrained('products')->onDelete('cascade');
             $table->timestamps();
         });
     }

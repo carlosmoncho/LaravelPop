@@ -15,8 +15,8 @@ class CreateDenunciaMTable extends Migration
     {
         Schema::create('denuncia_m', function (Blueprint $table) {
             $table->id()->autoIncrement();
-            $table->foreignId('user_id')->constrained('users');
-            $table->foreignId('mensaje_id')->constrained('mensajes');
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
+            $table->foreignId('mensaje_id')->constrained('mensajes')->onDelete('cascade');
             $table->timestamps();
         });
     }

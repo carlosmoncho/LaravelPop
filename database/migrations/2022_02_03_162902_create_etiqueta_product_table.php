@@ -14,7 +14,7 @@ class CreateEtiquetaProductTable extends Migration
     public function up()
     {
         Schema::create('etiqueta_product', function (Blueprint $table) {
-            $table->foreignId('product_id')->constrained('products');
+            $table->foreignId('product_id')->constrained('products')->onDelete('cascade');
             $table->foreignId('etiqueta_id')->constrained('etiquetas');
             $table->primary(['product_id','etiqueta_id']);
         });

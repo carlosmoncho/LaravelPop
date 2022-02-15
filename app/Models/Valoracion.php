@@ -9,8 +9,12 @@ class Valoracion extends Model
 {
     use HasFactory;
 
-    public function user()
+    public function valorador()
     {
-        return $this->hasOne(User::class);
+        return $this->hasOne(User::class, 'id','valorador_id');
+    }
+    public function receptor()
+    {
+        return $this->hasOne(User::class, 'id','user_id');
     }
 }

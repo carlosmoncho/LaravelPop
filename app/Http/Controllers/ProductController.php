@@ -2,13 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\DenunciaA;
-use App\Models\DenunciaM;
 use App\Models\Product;
 use App\Models\User;
 use Illuminate\Http\Request;
 
-class UserController extends Controller
+class ProductController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,8 +15,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::orderBy('id', 'ASC')->paginate(20);
-        return view('users.index', compact('users'));
+        $products = Product::orderBy('id', 'ASC')->paginate(20);
+        return view('products.index', compact('products'));
     }
 
     /**
@@ -51,8 +49,8 @@ class UserController extends Controller
     public function show($id)
     {
         $user = User::find($id);
-
-        return view('users.show', compact('user', 'user'));
+        $products = Product::where('user_id', $id)->paginate(20);
+        return view('products.show', compact('products', 'user'));
     }
 
     /**
@@ -86,7 +84,7 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        User::find($id)->delete();
+        Product::find($id)->delete();
         return back();
     }
 }

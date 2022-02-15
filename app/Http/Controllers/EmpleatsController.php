@@ -2,13 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\DenunciaA;
-use App\Models\DenunciaM;
-use App\Models\Product;
-use App\Models\User;
+use App\Models\Empleats;
 use Illuminate\Http\Request;
 
-class UserController extends Controller
+class EmpleatsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,8 +14,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::orderBy('id', 'ASC')->paginate(20);
-        return view('users.index', compact('users'));
+        $empleats = Empleats::orderBy('id', 'ASC')->paginate(20);
+        return view('empleats.index', compact('empleats'));
     }
 
     /**
@@ -50,9 +47,7 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        $user = User::find($id);
-
-        return view('users.show', compact('user', 'user'));
+        //
     }
 
     /**
@@ -86,7 +81,7 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        User::find($id)->delete();
+        Empleats::find($id)->delete();
         return back();
     }
 }

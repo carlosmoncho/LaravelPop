@@ -10,11 +10,15 @@ class Product extends Model
     use HasFactory;
     public function category()
     {
-        return $this->hasOne(Product::class);
+        return $this->hasOne(Category::class, 'id','category_id');
     }
     public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->hasOne(User::class,'id','user_id');
+    }
+    public function imagenes()
+    {
+        return $this->hasMany(Imagen::class,'product_id','id');
     }
     public function mensaje()
     {
@@ -32,4 +36,5 @@ class Product extends Model
     {
         return $this->belongsToMany(Etiqueta::class,'etiqueta_product');
     }
+
 }

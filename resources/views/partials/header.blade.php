@@ -9,7 +9,8 @@
     <meta content="Free HTML Templates" name="description">
 
     <!-- Favicon -->
-    <link href="img/favicon.ico" rel="icon">
+    <link href="/img/favicon.ico" rel="icon">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -19,11 +20,11 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
 
     <!-- Libraries Stylesheet -->
-    <link href="lib/animate/animate.min.css" rel="stylesheet">
-    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="/lib/animate/animate.min.css" rel="stylesheet">
+    <link href="/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
 
     <!-- Customized Bootstrap Stylesheet -->
-    <link href="css/style.css" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet">
 </head>
 
 <body>
@@ -38,8 +39,8 @@
         <div class="col-lg-6 text-center text-lg-right">
             <div class="d-inline-flex align-items-center">
                 <div class="btn-group">
-                    <button class="dropdown-item" type="button">{{Auth::user()->name}}</button>
-                    <i class="bi bi-person"><a class="dropdown-item" href="logout">Logout</a></i>
+                    <button class="dropdown-item" type="button"><i class="bi bi-person"></i>{{Auth::user()->name}}</button>
+                    <a class="dropdown-item" href="/logout">Logout</a>
                 </div>
             </div>
         </div>
@@ -65,9 +66,12 @@
             <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-3 py-lg-0 px-0">
                 <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                     <div class="navbar-nav mr-auto py-0">
-                        <a href="{{route('users.index')}}" class="nav-item nav-link active">Users</a>
-                        <a href=" " class="nav-item nav-link">Productos</a>
-                        <a href=" " class="nav-item nav-link">Denuncias</a>
+                        <a href="{{route('users.index')}}" class="nav-item nav-link ">Users</a>
+                        <a href="{{route('empleat.index')}}" class="nav-item nav-link ">Empleats</a>
+                        <a href="{{route('product.index')}}" class="nav-item nav-link">Productos</a>
+                        <a href="{{route('denunciaA.index')}}" class="nav-item nav-link">Denuncias Articulos</a>
+                        <a href="{{route('denunciaM.index')}}" class="nav-item nav-link">Denuncias Mensajes</a>
+                        <a href="{{route('categoria.index')}}" class="nav-item nav-link">Categorias</a>
                     </div>
                 </div>
             </nav>

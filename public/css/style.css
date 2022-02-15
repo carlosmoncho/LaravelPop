@@ -53,6 +53,7 @@ article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
   display: block;
 }
 
+
 body {
   margin: 0;
   font-family: "Roboto", sans-serif;
@@ -150,15 +151,17 @@ sub {
 sup {
   top: -.5em;
 }
-
+.categorias{
+    color: white !important;
+}
 a {
-  color: #3deeb9;
+  color: black;
   text-decoration: none;
   background-color: transparent;
 }
 
 a:hover {
-  color: #3deeb9;
+  color: #000000;
 }
 
 a:not([href]):not([class]) {

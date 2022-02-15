@@ -16,4 +16,12 @@ class Mensaje extends Model
     {
         return $this->hasOne(DenunciaM::class);
     }
+    public function emisor()
+    {
+        return $this->hasOne(User::class,'id','emisor_id');
+    }
+    public function receptor()
+    {
+        return $this->hasOne(User::class,'id','receptor_id');
+    }
 }

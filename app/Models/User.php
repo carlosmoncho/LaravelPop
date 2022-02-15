@@ -44,10 +44,22 @@ class User extends Authenticatable
 
     public function producto()
     {
-        return $this->hasMany(Product::class);
+        return $this->hasMany(Product::class,'user_id','id');
+    }
+    public function productosComprados()
+    {
+        return $this->hasMany(Product::class,'comprador_id','id');
+    }
+    public function DenunciasM()
+    {
+        return $this->hasMany(DenunciaM::class,'user_id','id');
+    }
+    public function DenunciasA()
+    {
+        return $this->hasMany(DenunciaA::class,'user_id','id');
     }
     public function valoracion()
     {
-        return $this->hasMany(Valoracion::class);
+        return $this->hasMany(Valoracion::class, 'user_id', 'id');
     }
 }

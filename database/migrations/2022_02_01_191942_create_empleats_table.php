@@ -15,7 +15,7 @@ class CreateEmpleatsTable extends Migration
     {
         Schema::create('empleats', function (Blueprint $table) {
             $table->id()->autoIncrement();
-            $table->string('nombre');
+            $table->string('name');
             $table->string('email')->unique();
             $table->string('password');
             $table->timestamps();

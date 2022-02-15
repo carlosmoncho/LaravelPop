@@ -11,6 +11,11 @@ class DenunciaM extends Model
     protected $table = 'denuncia_m';
     public function mensaje()
     {
-        return $this->hasOne(Mensaje::class);
+        return $this->hasOne(Mensaje::class, 'id','mensaje_id');
     }
+    public function user()
+    {
+        return $this->hasOne(User::class,'id','user_id');
+    }
+
 }

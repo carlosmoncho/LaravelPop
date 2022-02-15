@@ -5,10 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\DenunciaA;
 use App\Models\DenunciaM;
 use App\Models\Product;
-use App\Models\User;
 use Illuminate\Http\Request;
 
-class UserController extends Controller
+class DenunciasAController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,8 +16,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::orderBy('id', 'ASC')->paginate(20);
-        return view('users.index', compact('users'));
+        $denuncias = DenunciaA::orderBy('id', 'ASC')->paginate(5);
+        return view('denuncias.indexA', compact('denuncias'));
     }
 
     /**
@@ -50,9 +49,9 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        $user = User::find($id);
+        $product = Product::find($id);
 
-        return view('users.show', compact('user', 'user'));
+        return view('denuncias.showA', compact('product'));
     }
 
     /**
@@ -84,9 +83,13 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id, $tipo)
     {
-        User::find($id)->delete();
+        $denuncia = DenunciaA::find($id);
+        if ($tipo == 'aceptada'){
+            Product::find($denuncia->product_id)->delete();
+        }
+        $denuncia->delete();
         return back();
     }
 }

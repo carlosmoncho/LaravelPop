@@ -2,13 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\DenunciaA;
-use App\Models\DenunciaM;
+use App\Models\Mensaje;
 use App\Models\Product;
 use App\Models\User;
 use Illuminate\Http\Request;
 
-class UserController extends Controller
+class MensajeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,8 +16,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::orderBy('id', 'ASC')->paginate(20);
-        return view('users.index', compact('users'));
+        //
     }
 
     /**
@@ -51,8 +49,9 @@ class UserController extends Controller
     public function show($id)
     {
         $user = User::find($id);
-
-        return view('users.show', compact('user', 'user'));
+        $mensajes = Mensaje::where('emisor_id', $id)->paginate(3);
+        $mensajesRecibidos = Mensaje::where('receptor_id', $id)->paginate(3);
+        return view('mensajes.show', compact('mensajes', 'user','mensajesRecibidos'));
     }
 
     /**
@@ -86,7 +85,7 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        User::find($id)->delete();
+        Mensaje::find($id)->delete();
         return back();
     }
 }

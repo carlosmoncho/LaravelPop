@@ -14,7 +14,7 @@ class EmpleatsFactory extends Factory
     public function definition()
     {
         return [
-            'nombre' => $this->faker->name(),
+            'name' => $this->faker->name(),
             'email' => $this->faker->unique()->safeEmail(),
             'password' => bcrypt('1234'),
         ];

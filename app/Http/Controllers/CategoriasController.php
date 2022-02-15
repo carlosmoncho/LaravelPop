@@ -51,7 +51,7 @@ class CategoriasController extends Controller
             $category->img = '/storage/img/'.$fileName;
         }
         $category->save();
-        return redirect('/');
+        return redirect('/categoria');
     }
 
     /**

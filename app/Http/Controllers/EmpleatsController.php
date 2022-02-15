@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\EmpleatsRequest;
 use App\Models\Empleats;
 use Illuminate\Http\Request;
 
@@ -25,7 +26,7 @@ class EmpleatsController extends Controller
      */
     public function create()
     {
-        //
+        return view('empleats.create');
     }
 
     /**
@@ -36,7 +37,12 @@ class EmpleatsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $empleat = new Empleats();
+        $empleat->name = $request->get('name');
+        $empleat->email = $request->get('email');
+        $empleat->password = bcrypt($request->get('password'));
+        $empleat->save();
+        return redirect('/empleat');
     }
 
     /**

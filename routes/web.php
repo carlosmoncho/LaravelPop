@@ -8,7 +8,11 @@ use App\Http\Controllers\MensajeController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ValoracionesController;
+use App\Models\Empleats;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use Laravel\Socialite\Facades\Socialite;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,6 +24,23 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+
+Route::get('/login-google', function () {
+    return Socialite::driver('google')->redirect();
+});
+
+Route::get('/google-callback', function () {
+    Auth::guard('web');
+    $user = Socialite::driver('google')->user();
+    $userExists = Empleats::where('email', $user->email)->first();
+    if ($userExists){
+        Auth::login($userExists);
+        return redirect('/welcome');
+    }
+    return redirect('/');
+});
+
 
 Route::view('/', 'auth.login');
 Route::get('/welcome', function () {
@@ -40,7 +61,6 @@ Route::get('/delete/{id}', [\App\Http\Controllers\UserController::class,'destroy
 Route::get('/deleteProduct/{id}', [\App\Http\Controllers\ProductController::class,'destroy']);
 Route::get('/deleteDenunciaA/{id}/{tipo}', [\App\Http\Controllers\DenunciasAController::class,'destroy']);
 Route::get('/deleteDenunciaM/{id}/{tipo}', [\App\Http\Controllers\DenunciasMController::class,'destroy']);
-Route::get('/deleteCategoria/{id}', [\App\Http\Controllers\CategoriasController::class,'destroy']);
 Route::get('/deleteMensaje/{id}', [\App\Http\Controllers\MensajeController::class,'destroy']);
 Route::get('/deleteEmpleado/{id}', [\App\Http\Controllers\EmpleatsController::class,'destroy']);
 

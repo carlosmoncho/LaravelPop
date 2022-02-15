@@ -22,7 +22,6 @@
                         <td>{{count($categoria->producto)}}</td>
                         <td>{{ $categoria->descripcion }}</td>
                         <td>
-                            <a class="crud" href="/deleteCategoria/{{ $categoria->id }}"><i class="bi bi-trash"></i></a>
                             <a class="crud" href="{{route('categoria.edit', $categoria->id)}}"><i class="bi bi-pencil"></i></a>
                         </td>
                     </tr>

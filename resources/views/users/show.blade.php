@@ -17,7 +17,7 @@
                                 <p>{{$user->email}}</p>
                             </div>
                             <div class="media">
-                                <iframe src="{{$user->ubicacion}}" style="margin-bottom:20px;  width:200px; height:250px;" allowfullscreen="" loading="lazy"></iframe>
+                                <iframe src="{{$user->ubicacion}}" style="margin-bottom:20px;  width:300px; height:200px;" allowfullscreen="" loading="lazy"></iframe>
                             </div>
                         </div>
                     </div>
@@ -54,7 +54,7 @@
                         @if(empty($user->valoracion->avg('valoracion')))
                             <p class="count" data-to="190" data-speed="190">No tiene valoraciones</p>
                         @else
-                            <h6 class="count h2" data-to="190" data-speed="190">{{$user->valoracion->avg('valoracion')}}</h6>
+                            <h6 class="count h2" data-to="190" data-speed="190">{{round($user->valoracion->avg('valoracion'),1)}}</h6>
                         @endif
                         <p class="m-0px font-w-600">Valoracion</p>
                     </div>

@@ -3,8 +3,11 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Models\Etiqueta;
+use App\Models\Imagen;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ProductController extends Controller
 {
@@ -19,8 +22,35 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::get();
+        if (isset($_GET['limite'])){
+            $limit = $_GET['limite']??100000;
+            $products = Product::where('sale',0)->limit($limit)->get();
+            return response()->json($products, 200);
+        }
+        $products = Product::where('sale',0)->paginate(24);
+        if (isset($_GET['categoria'])){
+            $products = $products->where('category_id', $_GET['categoria'])->paginate(24);
+        }
+
+        if (isset($_GET['precio'])){
+            if ($_GET['precio'] == 1000){
+                $priceInicial = (float)$_GET['precio']-1000;
+                $priceFinal = (float) $_GET['precio'];
+            }else{
+                $priceInicial = (float)$_GET['precio']-100;
+                $priceFinal = (float) $_GET['precio'];
+            }
+            $products = $products->whereBetween('precio', [$priceInicial, $priceFinal])->paginate(24);
+        }
+        if (isset($_GET['etiqueta'])){
+            $etiqueta = DB::table('etiqueta_product')->where('etiqueta_id', $_GET['etiqueta'])->pluck('product_id')->paginate(24);
+            $products = $products->whereIn('id', $etiqueta);
+        }
+        if (isset($_GET['count'])){
+            $products = $products->where('category_id', $_GET['count'])->count();
+        }
         return response()->json($products, 200);
+
     }
 
     /**
@@ -52,7 +82,7 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        return response()->json($product, 200);
+        return response()->json($product,200);
     }
 
     /**

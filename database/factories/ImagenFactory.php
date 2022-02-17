@@ -16,7 +16,7 @@ class ImagenFactory extends Factory
     {
         return [
             'product_id' => Product::inRandomOrder()->first()->id,
-            'img' => 'https://empresas.blogthinkbig.com/wp-content/uploads/2019/11/Imagen3-245003649.jpg?w=800',
+            'img' => '/storage/img/1-categoria.png',
         ];
     }
 }

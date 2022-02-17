@@ -17,5 +17,11 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-
+//Route::get('/products/{', \App\Http\Controllers\Api\ProductController::class);
 Route::apiResource('/products', \App\Http\Controllers\Api\ProductController::class);
+Route::post('login', [\App\Http\Controllers\Api\LoginController::class, 'login']);
+Route::apiResource('/etiquetas', \App\Http\Controllers\Api\EtiquetaController::class);
+Route::apiResource('/users', \App\Http\Controllers\Api\UserController::class);
+Route::apiResource('/imagen', \App\Http\Controllers\Api\ImageController::class);
+Route::apiResource('/categories', \App\Http\Controllers\Api\CategoriaController::class);
+Route::apiResource('/valoraciones', \App\Http\Controllers\Api\ValoracionController::class);

@@ -47,9 +47,9 @@ class Handler extends ExceptionHandler
                 else if ($exception instanceof AuthenticationException)
                     return response()->json(['error' => 'Usuario no autenticado'], 401);
                 else if ($exception instanceof ValidationException)
-                    return response()->json(['error' => 'Datos no válidos'], 400);
+                    return response()->json(['error' => 'Datos no válidos:'.$exception->getMessage()], 400);
                 else if ($exception instanceof QueryException)
-                    return response()->json(['error' => 'Datos no válidos'], 400);
+                    return response()->json(['error' => 'Datos no válidos:'.$exception->getMessage()], 400);
                 else if (isset($exception))
                     return response()->json(['error' => 'Error en la aplicación :' .$exception->getMessage()], 500);
             }

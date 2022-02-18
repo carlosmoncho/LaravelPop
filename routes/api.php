@@ -20,6 +20,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 //Route::get('/products/{', \App\Http\Controllers\Api\ProductController::class);
 Route::apiResource('/products', \App\Http\Controllers\Api\ProductController::class);
 Route::post('login', [\App\Http\Controllers\Api\LoginController::class, 'login']);
+Route::post('register', [\App\Http\Controllers\Api\LoginController::class, 'register']);
 Route::apiResource('/etiquetas', \App\Http\Controllers\Api\EtiquetaController::class);
 Route::apiResource('/users', \App\Http\Controllers\Api\UserController::class);
 Route::apiResource('/imagen', \App\Http\Controllers\Api\ImageController::class);

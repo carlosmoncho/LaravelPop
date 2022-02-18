@@ -40,7 +40,7 @@
             <div class="d-inline-flex align-items-center">
                 <div class="btn-group">
                     <button class="dropdown-item" type="button"><i class="bi bi-person"></i>{{Auth::user()->name}}</button>
-                    <a class="dropdown-item" href="/logout">Logout</a>
+                    <a class="dropdown-item" href="/logoutUser">Logout</a>
                 </div>
             </div>
         </div>

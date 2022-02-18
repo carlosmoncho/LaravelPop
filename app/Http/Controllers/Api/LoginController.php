@@ -23,4 +23,12 @@ class LoginController extends Controller
             return response()->json(compact('token', 'usuario'));
         }
     }
+    public function register(Request $request){
+        $user = new User();
+        $user->name = $request->get('name');
+        $user->email = $request->get('email');
+        $user->password = $request->get('password');
+        $user->save();
+        return response()->json($user, 201);
+    }
 }

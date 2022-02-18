@@ -56,7 +56,7 @@ Route::resource('denunciaM', DenunciasMController::class);
 Route::resource('denunciaA', DenunciasAController::class);
 Route::resource('categoria', \App\Http\Controllers\CategoriasController::class);
 
-Route::get('logout', [LoginController::class, 'logout'])->name('logout');
+Route::get('logoutUser', [LoginController::class, 'logout'])->name('logoutUser');
 Route::get('/delete/{id}', [\App\Http\Controllers\UserController::class,'destroy']);
 Route::get('/deleteProduct/{id}', [\App\Http\Controllers\ProductController::class,'destroy']);
 Route::get('/deleteDenunciaA/{id}/{tipo}', [\App\Http\Controllers\DenunciasAController::class,'destroy']);

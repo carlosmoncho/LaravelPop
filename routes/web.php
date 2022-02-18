@@ -47,7 +47,6 @@ Route::get('/welcome', function () {
     return view('welcome');
 });
 
-Route::resource('users', UserController::class);
 Route::resource('empleat', \App\Http\Controllers\EmpleatsController::class);
 Route::resource('product', ProductController::class);
 Route::resource('mensaje', MensajeController::class);

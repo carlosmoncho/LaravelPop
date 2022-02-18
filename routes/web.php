@@ -47,10 +47,11 @@ Route::get('/welcome', function () {
     return view('welcome');
 });
 
+Route::resource('user', UserController::class);
 Route::resource('empleat', \App\Http\Controllers\EmpleatsController::class);
 Route::resource('product', ProductController::class);
 Route::resource('mensaje', MensajeController::class);
-Route::resource('valoraciones', ValoracionesController::class);
+Route::resource('valoracion', ValoracionesController::class);
 Route::resource('denunciaM', DenunciasMController::class);
 Route::resource('denunciaA', DenunciasAController::class);
 Route::resource('categoria', \App\Http\Controllers\CategoriasController::class);

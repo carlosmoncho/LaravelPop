@@ -23,8 +23,8 @@
                                 <a class="crud" href="/delete/{{ $user->id }}"><i class="bi bi-trash"></i></a>
                                 <a class="crud" href="{{route('product.show', $user->id)}}"><i class="bi bi-bag"></i></a>
                                 <a class="crud" href="{{route('mensaje.show', $user->id)}}"><i class="bi bi-chat-left"></i></a>
-                                <a class="crud" href="{{route('valoraciones.show', $user->id)}}"><i class="bi bi-star"></i></a>
-                                <a class="crud" href="{{route('users.show', $user->id)}}"><i class="bi bi-eye"></i></a>
+                                <a class="crud" href="{{route('valoracion.show', $user->id)}}"><i class="bi bi-star"></i></a>
+                                <a class="crud" href="{{route('user.show', $user->id)}}"><i class="bi bi-eye"></i></a>
                             </td>
                         </tr>
                     @endforeach

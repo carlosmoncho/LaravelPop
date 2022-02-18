@@ -47,7 +47,7 @@
     </div>
     <div class="row align-items-center bg-light py-3 px-xl-5 d-none d-lg-flex">
         <div class="col-lg-4">
-            <a href="{{route('users.index')}}"  class="text-decoration-none">
+            <a href="{{route('user.index')}}"  class="text-decoration-none">
                 <span class="h1 text-uppercase text-primary bg-dark px-2">Batoi</span>
                 <span class="h1 text-uppercase text-dark bg-primary px-2 ml-n1">POP</span>
             </a>
@@ -74,7 +74,7 @@
                 </button>
                 <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                     <div class="navbar-nav mr-auto py-0">
-                        <a href="{{route('users.index')}}" class="nav-item nav-link ">Users</a>
+                        <a href="{{route('user.index')}}" class="nav-item nav-link ">Users</a>
                         <a href="{{route('empleat.index')}}" class="nav-item nav-link ">Empleats</a>
                         <a href="{{route('product.index')}}" class="nav-item nav-link">Productos</a>
                         <a href="{{route('denunciaA.index')}}" class="nav-item nav-link">Denuncias Articulos</a>

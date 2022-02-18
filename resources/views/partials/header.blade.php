@@ -74,7 +74,7 @@
                 </button>
                 <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                     <div class="navbar-nav mr-auto py-0">
-                        <a href="{{route('users.index')}}" class="nav-item nav-link ">Users</a>
+                        <a href="{{route()}}" class="nav-item nav-link ">Users</a>
                         <a href="{{route('empleat.index')}}" class="nav-item nav-link ">Empleats</a>
                         <a href="{{route('product.index')}}" class="nav-item nav-link">Productos</a>
                         <a href="{{route('denunciaA.index')}}" class="nav-item nav-link">Denuncias Articulos</a>

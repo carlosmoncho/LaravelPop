@@ -11,12 +11,7 @@ use Ramsey\Uuid\Rfc4122\Validator;
 
 class LoginController extends Controller
 {
-    private $apiToken;
-    public function __construct()
-    {
-        //create token
-        $this->apiToken = uniqid(base64_encode(Str::random(40)));
-    }
+
     public function login(Request $request)
     {
         $usuario = User::where('email', $request->email)->first();

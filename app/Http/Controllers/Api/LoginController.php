@@ -26,5 +26,14 @@ class LoginController extends Controller
             return response()->json(compact('token', 'usuario'));
         }
     }
+    public function register(Request $request){
+        $postArray = $request->all();
 
+        $postArray['password'] = bcrypt($postArray['password']);
+        $postArray['remember_token'] =  $this->apiToken;
+        $user = User::create($postArray);
+        $token = $user->createToken($user->email)->plainTextToken;
+
+        return response()->json(compact('token', 'user'),200);
+    }
 }

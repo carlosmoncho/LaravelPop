@@ -15,8 +15,11 @@ class EtiquetaController extends Controller
      */
     public function index()
     {
-        $etiqueta = Etiqueta::get();
-        return response()->json($etiqueta, 200);
+        $etiquetas = Etiqueta::get();
+        foreach ($etiquetas as $etiqueta){
+            $conteo[] = DB::table('etiqueta_product')->where('etiqueta_id', $etiqueta->id)->count();
+        }
+        return response()->json(compact('etiquetas','conteo'), 200);
     }
 
     /**

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\valoracionResource;
+use App\Http\Resources\valoradorResource;
 use App\Models\Valoracion;
 use Illuminate\Http\Request;
 
@@ -15,8 +17,20 @@ class ValoracionController extends Controller
      */
     public function index()
     {
-        $valoracion = Valoracion::get();
-        return response()->json($valoracion, 200);
+        if (isset($_GET['userId'])){
+            $valoracion = valoracionResource::collection(Valoracion::where('user_id', $_GET['userId'])->get());
+            $count = $valoracion->count();
+            return response()->json(compact('valoracion', 'count'), 200);
+        }
+        if (isset($_GET['valorador'])){
+            $valoracion = valoradorResource::collection(Valoracion::where('valorador_id', $_GET['valorador'])->get());
+            $count = $valoracion->count();
+            return response()->json(compact('valoracion', 'count'), 200);
+        }
+        else{
+            $valoracion = Valoracion::get();
+            return response()->json($valoracion, 200);
+        }
     }
 
     /**

@@ -6,9 +6,17 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
+use Ramsey\Uuid\Rfc4122\Validator;
 
 class LoginController extends Controller
 {
+    private $apiToken;
+    public function __construct()
+    {
+        //create token
+        $this->apiToken = uniqid(base64_encode(Str::random(40)));
+    }
     public function login(Request $request)
     {
         $usuario = User::where('email', $request->email)->first();
@@ -23,12 +31,5 @@ class LoginController extends Controller
             return response()->json(compact('token', 'usuario'));
         }
     }
-    public function register(Request $request){
-        $user = new User();
-        $user->name = $request->get('name');
-        $user->email = $request->get('email');
-        $user->password = $request->get('password');
-        $user->save();
-        return response()->json($user, 201);
-    }
+
 }

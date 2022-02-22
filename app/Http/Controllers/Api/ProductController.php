@@ -22,12 +22,28 @@ class ProductController extends Controller
      */
     public function index()
     {
+        if (isset($_GET['search'])){
+            $products = Product::where('nombre', 'like', $_GET['search'].'%');
+            return response()->json($products->paginate(24), 200);
+        }
+
         if (isset($_GET['limite'])){
             $limit = $_GET['limite']??100000;
             $products = Product::where('sale',0)->limit($limit)->get();
             return response()->json($products, 200);
         }
-        $products = Product::where('sale',0)->paginate(24);
+
+        if (isset($_GET['userId'])){
+            $products = Product::where('user_id', $_GET['userId'])->get();
+            return response()->json($products, 200);
+        }
+
+        if (isset($_GET['compradorId'])){
+            $products = Product::where('comprador_id', $_GET['compradorId'])->get();
+            return response()->json($products, 200);
+        }
+
+        $products = Product::where('sale',0);
         if (isset($_GET['categoria'])){
             $products = $products->where('category_id', $_GET['categoria']);
         }
@@ -46,16 +62,30 @@ class ProductController extends Controller
             $etiqueta = DB::table('etiqueta_product')->where('etiqueta_id', $_GET['etiqueta'])->pluck('product_id');
             $products = $products->whereIn('id', $etiqueta);
         }
-        if (isset($_GET['count'])){
-            $products = $products->where('category_id', $_GET['count'])->count();
+        if (isset($_GET['countCategory'])){
+            $products = $products->where('category_id', $_GET['countCategory'])->count();
+            return response()->json($products, 200);
+        }
+        if (isset($_GET['countEtiqueta'])){
+            $etiqueta = DB::table('etiqueta_product')->where('etiqueta_id', $_GET['countEtiqueta'])->count();
+            return response()->json($etiqueta, 200);
+        }
+        if (isset($_GET['countPrecio'])){
+            if ($_GET['countPrecio'] == 1000){
+                $priceInicial = (float)$_GET['countPrecio']-1000;
+                $priceFinal = (float) $_GET['countPrecio'];
+            }else{
+                $priceInicial = (float)$_GET['countPrecio']-100;
+                $priceFinal = (float) $_GET['countPrecio'];
+            }
+            $products = $products->whereBetween('precio', [$priceInicial, $priceFinal])->count();
+            return response()->json($products, 200);
         }
         if ($products->count()){
             return response()->json($products->paginate(24), 200);
         }else{
             return response()->json(null, 200);
         }
-
-
     }
 
     /**
@@ -67,14 +97,12 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         $product = new Product();
-        $product->category_id = $request->get('category_id');
-        $product->nombre = $request->get('nombre');
+        $product->category_id = $request->get('categoria');
+        $product->nombre = $request->get('name');
         $product->descripcion = $request->get('descripcion');
-        $product->sale = $request->get('sale');
-        $product->user_id = $request->get('user_id');
-        $product->precio = $request->get('precio');
-        $product->available = $request->get('available');
-        $product->category_id =  $request->get('category_id');
+        $product->sale = 0;
+        $product->user_id = $request->get('userId');
+        $product->precio = $request->get('price');
         $product->save();
         return response()->json($product, 200);
     }
@@ -97,16 +125,14 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Product $product)
+    public function update(Request $request)
     {
-        $product->category_id = $request->get('category_id');
-        $product->nombre = $request->get('nombre');
-        $product->descripcion = $request->get('descripcion');
-        $product->sale = $request->get('sale');
-        $product->user_id = $request->get('user_id');
-        $product->precio = $request->get('precio');
-        $product->available = $request->get('available');
-        $product->category_id =  $request->get('category_id');
+
+        $postArray = $request->all();
+        $product = Product::find($postArray['id']);
+        $product->sale = 1;
+        $product->comprador_id = $postArray['comprador_id'];
+
         $product->save();
         return  response()->json($product, 200);
     }

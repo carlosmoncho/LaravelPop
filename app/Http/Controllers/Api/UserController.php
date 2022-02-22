@@ -27,7 +27,6 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        return response()->json($request, 201);
         $user = new User();
         $user->name = $request->get('name');
         $user->email = $request->get('email');

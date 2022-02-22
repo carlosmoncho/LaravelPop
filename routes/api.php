@@ -19,6 +19,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 //Route::get('/products/{', \App\Http\Controllers\Api\ProductController::class);
 Route::apiResource('/products', \App\Http\Controllers\Api\ProductController::class);
+Route::post('newProduct', [\App\Http\Controllers\Api\ProductController::class,'store']);
 Route::post('login', [\App\Http\Controllers\Api\LoginController::class, 'login']);
 Route::post('register', [\App\Http\Controllers\Api\LoginController::class, 'register']);
 Route::apiResource('/etiquetas', \App\Http\Controllers\Api\EtiquetaController::class);
@@ -26,3 +27,5 @@ Route::apiResource('/users', \App\Http\Controllers\Api\UserController::class);
 Route::apiResource('/imagen', \App\Http\Controllers\Api\ImageController::class);
 Route::apiResource('/categories', \App\Http\Controllers\Api\CategoriaController::class);
 Route::apiResource('/valoraciones', \App\Http\Controllers\Api\ValoracionController::class);
+Route::put('comprar', [\App\Http\Controllers\Api\ProductController::class, 'update']);
+Route::apiResource('/mensajes', \App\Http\Controllers\Api\MensajesController::class);

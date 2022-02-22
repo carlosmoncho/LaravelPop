@@ -19,7 +19,10 @@ class CategoriaController extends Controller
     public function index()
     {
         $category = Category::get();
-        return response()->json($category, 200);
+        foreach ($category as $categoria){
+            $conteo[] = DB::table('products')->where('category_id', $categoria->id)->count();
+        }
+        return response()->json(compact('category','conteo'), 200);
 
     }
 

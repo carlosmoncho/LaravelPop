@@ -23,7 +23,6 @@ class ProductFactory extends Factory
             'descripcion' => $this->faker->text(),
             'precio' => $this->faker->randomFloat(2, 1, 100 ),
             'sale' => $this->faker->boolean(),
-            'comprador_id' => User::inRandomOrder()->first()->id,
             'user_id' => User::inRandomOrder()->first()->id,
         ];
     }

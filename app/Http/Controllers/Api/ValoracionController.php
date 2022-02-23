@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\valoracionResource;
 use App\Http\Resources\valoradorResource;
+use App\Models\Product;
 use App\Models\Valoracion;
 use Illuminate\Http\Request;
 
@@ -41,11 +42,11 @@ class ValoracionController extends Controller
      */
     public function store(Request $request)
     {
+        $product = Product::find($request->get('id'));
         $valoracion = new Valoracion();
-        $valoracion->id = $request->get('id');
-        $valoracion->user_id = $request->get('user_id');
+        $valoracion->user_id = $product->user_id;
         $valoracion->valorador_id = $request->get('valorador_id');
-        $valoracion->product_id = $request->get('product_id');
+        $valoracion->product_id = $product->id;
         $valoracion->valoracion = $request->get('valoracion');
         $valoracion->comentario = $request->get('comentario');
         $valoracion->save();

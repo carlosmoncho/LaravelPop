@@ -27,5 +27,7 @@ Route::apiResource('/users', \App\Http\Controllers\Api\UserController::class);
 Route::apiResource('/imagen', \App\Http\Controllers\Api\ImageController::class);
 Route::apiResource('/categories', \App\Http\Controllers\Api\CategoriaController::class);
 Route::apiResource('/valoraciones', \App\Http\Controllers\Api\ValoracionController::class);
+Route::post('newValoracion', [\App\Http\Controllers\Api\ValoracionController::class,'store']);
 Route::put('comprar', [\App\Http\Controllers\Api\ProductController::class, 'update']);
 Route::apiResource('/mensajes', \App\Http\Controllers\Api\MensajesController::class);
+Route::post('newComent', [\App\Http\Controllers\Api\MensajesController::class, 'store']);

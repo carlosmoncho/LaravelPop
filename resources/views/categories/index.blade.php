@@ -12,7 +12,7 @@
                 <th scope="col">Id</th><th scope="col">Imagen</th><th scope="col">Categoria</th><th scope="col">Total Productos</th><th scope="col">Descripcion</th><th scope="col">Actions <a href="{{route('categoria.create')}}" class="btn btn-sm btn-dark">New</a></th>
             </tr>
             </thead>
-            @if(\PHPUnit\Framework\isEmpty($categorias))
+            @if($categorias === null)
                 <tbody>
                 @foreach ($categorias as $categoria)
                     <tr>

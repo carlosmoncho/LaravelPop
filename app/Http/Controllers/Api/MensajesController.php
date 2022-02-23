@@ -34,12 +34,12 @@ class MensajesController extends Controller
     public function store(Request $request)
     {
         $mensaje = new Mensaje();
-        $mensaje->id = $request->get('id');
         $mensaje->emisor_id = $request->get('emisor_id');
         $mensaje->receptor_id = $request->get('receptor_id');
         $mensaje->product_id = $request->get('product_id');
         $mensaje->contenido = $request->get('contenido');
-        $mensaje->created_at = $request->get('created_at');
+        $mensaje->save();
+        return response()->json($mensaje, 201);
     }
 
     /**

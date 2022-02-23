@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Etiqueta;
 use App\Models\Imagen;
 use App\Models\Product;
+use App\Models\User;
+use App\Models\Valoracion;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -25,6 +27,15 @@ class ProductController extends Controller
         if (isset($_GET['search'])){
             $products = Product::where('nombre', 'like', $_GET['search'].'%');
             return response()->json($products->paginate(24), 200);
+        }
+
+        if (isset($_GET['detalles'])){
+            $products = Product::where('id', $_GET['detalles'])->get();
+            $user = User::where('id', $products[0]->user_id)->get();
+            $valoracionUser = Valoracion::where('user_id', $user[0]->id)->get();
+            $valoracion = $valoracionUser->average('valoracion');
+            $conteo = $valoracionUser->count();
+            return response()->json(compact('products','user', 'valoracion','conteo'), 200);
         }
 
         if (isset($_GET['limite'])){

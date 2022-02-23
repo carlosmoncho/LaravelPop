@@ -19,6 +19,11 @@ class MensajesController extends Controller
         if (isset($_GET['userId'])){
             $mensajes = DB::table('mensajes')->where('receptor_id',$_GET['userId'])->get();
             return response()->json($mensajes, 200);
+        }
+
+        if (isset($_GET['productId'])){
+            $mensajes = DB::table('mensajes')->where('product_id',$_GET['productId'])->get();
+            return response()->json($mensajes, 200);
         }else {
             $mensajes = Mensaje::all();
             return response()->json($mensajes, 200);

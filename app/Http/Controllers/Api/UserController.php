@@ -56,15 +56,18 @@ class UserController extends Controller
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
+    public function update(Request $request)
     {
-        $user->name = $request->get('name');
-        $user->email = $request->get('email');
-        $user->email_verified_at = $request->get('email_verified_at');
-        $user->img = $request->get('img');
-        $user->ubicacion = $request->get('ubicacion');
+        $postArray = $request->all();
+        $user = User::find($postArray['id']);
+        $user->name = $postArray['name'];
+        $user->email =$postArray['email'];
+        $user->ubicacion =$postArray['ubi'];
         $user->save();
-        return response()->json($user, 201);
+        return  response()->json($user, 200);
+        //$user->img = $request->get('img');
+        //$user->ubicacion = $request->get('ubicacion');
+
     }
 
     /**

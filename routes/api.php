@@ -31,3 +31,8 @@ Route::post('newValoracion', [\App\Http\Controllers\Api\ValoracionController::cl
 Route::put('comprar', [\App\Http\Controllers\Api\ProductController::class, 'update']);
 Route::apiResource('/mensajes', \App\Http\Controllers\Api\MensajesController::class);
 Route::post('newComent', [\App\Http\Controllers\Api\MensajesController::class, 'store']);
+Route::post('newValoracion', [\App\Http\Controllers\Api\ValoracionController::class,'store']);
+Route::put('editarProfile', [\App\Http\Controllers\Api\UserController::class, 'update']);
+Route::post('newComent', [\App\Http\Controllers\Api\MensajesController::class, 'store']);
+Route::post('newDenunciaA', [\App\Http\Controllers\Api\DenunciesAController::class, 'store']);
+Route::post('newDenunciaM', [\App\Http\Controllers\Api\DenunciesMController::class, 'store']);

@@ -12,6 +12,7 @@
                     <th scope="col">Id</th><th scope="col">Name</th><th scope="col">Email</th><th scope="col">Actions</th>
                 </tr>
                 </thead>
+                @if(!empty($users))
                     <tbody>
                     @foreach ($users as $user)
                         <tr>
@@ -28,6 +29,7 @@
                         </tr>
                     @endforeach
                     </tbody>
+                @endif
             </table>
         <div class="d-flex justify-content-center">
             {{ $users->links() }}

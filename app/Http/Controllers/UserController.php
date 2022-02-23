@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\contactMail;
 use App\Models\DenunciaA;
 use App\Models\DenunciaM;
 use App\Models\Product;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class UserController extends Controller
 {
@@ -51,6 +53,8 @@ class UserController extends Controller
     public function show($id)
     {
         $user = User::find($id);
+        $correo = new contactMail($articulo);
+        Mail::to('carlosmoncho2002@gmail.com')->send($correo);
         return view('users.show', compact('user', 'user'));
     }
 

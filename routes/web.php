@@ -8,9 +8,11 @@ use App\Http\Controllers\MensajeController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ValoracionesController;
+use App\Mail\contactMail;
 use App\Models\Empleats;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 use Laravel\Socialite\Facades\Socialite;
 
@@ -63,6 +65,7 @@ Route::get('/deleteDenunciaA/{id}/{tipo}', [\App\Http\Controllers\DenunciasACont
 Route::get('/deleteDenunciaM/{id}/{tipo}', [\App\Http\Controllers\DenunciasMController::class,'destroy']);
 Route::get('/deleteMensaje/{id}', [\App\Http\Controllers\MensajeController::class,'destroy']);
 Route::get('/deleteEmpleado/{id}', [\App\Http\Controllers\EmpleatsController::class,'destroy']);
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');

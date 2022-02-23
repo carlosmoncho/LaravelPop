@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\DenunciaA;
+use App\Models\DenunciaM;
 use Illuminate\Http\Request;
 
 class DenunciesAController extends Controller

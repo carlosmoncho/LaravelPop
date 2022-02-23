@@ -12,7 +12,7 @@
                     <th scope="col">Id</th><th scope="col">Usuario Denunciado</th><th>Producto</th><th>Actions</th>
                 </tr>
                 </thead>
-                @if(\PHPUnit\Framework\isEmpty($denuncias))
+                @if(!empty($denuncias))
                     <tbody>
                     @foreach ($denuncias as $denuncia)
                         <tr>

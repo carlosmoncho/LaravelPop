@@ -12,7 +12,7 @@
                 <th scope="col">Id</th><th scope="col">Name</th><th scope="col">Email</th><th scope="col">Actions <a href="{{route('empleat.create')}}" class="btn btn-sm btn-dark">New</a></th>
             </tr>
             </thead>
-            @if(\PHPUnit\Framework\isEmpty($empleats))
+            @if(!empty($empleats))
                 <tbody>
                 @foreach ($empleats as $empleat)
                     <tr>

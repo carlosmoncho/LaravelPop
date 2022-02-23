@@ -12,7 +12,7 @@
                     <th scope="col">Id</th><th scope="col">Name</th><th scope="col">Email</th><th scope="col">Actions</th>
                 </tr>
                 </thead>
-                @if(\PHPUnit\Framework\isEmpty($users))
+                @if(!empty($users))
                     <tbody>
                     @foreach ($users as $user)
                         <tr>

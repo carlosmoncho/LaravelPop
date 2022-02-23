@@ -8,7 +8,7 @@ use App\Http\Controllers\MensajeController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ValoracionesController;
-use App\Mail\contactMail;
+use App\Mail\denunciaProducto;
 use App\Models\Empleats;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
@@ -55,7 +55,7 @@ Route::resource('product', ProductController::class);
 Route::resource('mensaje', MensajeController::class);
 Route::resource('valoracion', ValoracionesController::class);
 Route::resource('denunciaM', DenunciasMController::class);
-Route::resource('denunciaA', DenunciasAController::class);
+Route::resource('denunciaProducto', DenunciasAController::class);
 Route::resource('categoria', \App\Http\Controllers\CategoriasController::class);
 
 Route::get('logoutUser', [LoginController::class, 'logout'])->name('logoutUser');
@@ -65,6 +65,7 @@ Route::get('/deleteDenunciaA/{id}/{tipo}', [\App\Http\Controllers\DenunciasACont
 Route::get('/deleteDenunciaM/{id}/{tipo}', [\App\Http\Controllers\DenunciasMController::class,'destroy']);
 Route::get('/deleteMensaje/{id}', [\App\Http\Controllers\MensajeController::class,'destroy']);
 Route::get('/deleteEmpleado/{id}', [\App\Http\Controllers\EmpleatsController::class,'destroy']);
+Route::get('/deleteValoracion/{id}', [\App\Http\Controllers\ValoracionesController::class,'destroy']);
 
 
 Route::get('/dashboard', function () {

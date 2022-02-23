@@ -2,17 +2,16 @@
 
 namespace App\Mail;
 
-use App\Models\Product;
+use App\Models\Mensaje;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class contactMail extends Mailable
+class denunciaMensaje extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $subjet = 'info contact';
     public $data;
 
     /**
@@ -20,9 +19,9 @@ class contactMail extends Mailable
      *
      * @return void
      */
-    public function __construct( Product $producto)
+    public function __construct(Mensaje $mensaje)
     {
-        $this->data = $producto;
+        $this->data = $mensaje;
     }
 
     /**
@@ -32,6 +31,6 @@ class contactMail extends Mailable
      */
     public function build()
     {
-        return $this->view('emails.denunciaA')->with(['data'=>$this->data]);
+        return $this->view('emails.denunciaM')->with(['data'=>$this->data]);
     }
 }

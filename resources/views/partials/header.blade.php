@@ -77,7 +77,7 @@
                         <a href="{{route('user.index')}}" class="nav-item nav-link ">Users</a>
                         <a href="{{route('empleat.index')}}" class="nav-item nav-link ">Empleats</a>
                         <a href="{{route('product.index')}}" class="nav-item nav-link">Productos</a>
-                        <a href="{{route('denunciaA.index')}}" class="nav-item nav-link">Denuncias Articulos</a>
+                        <a href="{{route('denunciaProducto.index')}}" class="nav-item nav-link">Denuncias Articulos</a>
                         <a href="{{route('denunciaM.index')}}" class="nav-item nav-link">Denuncias Mensajes</a>
                         <a href="{{route('categoria.index')}}" class="nav-item nav-link">Categorias</a>
                     </div>

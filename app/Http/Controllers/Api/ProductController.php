@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Mail\compraProducto;
+use App\Mail\denunciaProducto;
 use App\Models\Etiqueta;
 use App\Models\Imagen;
 use App\Models\Product;
@@ -10,6 +12,7 @@ use App\Models\User;
 use App\Models\Valoracion;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 
 class ProductController extends Controller
 {
@@ -143,8 +146,10 @@ class ProductController extends Controller
         $product = Product::find($postArray['id']);
         $product->sale = 1;
         $product->comprador_id = $postArray['comprador_id'];
-
-        $product->save();
+        $product->save();;
+        $user = User::find($product->user_id);
+        $correo = new compraProducto($product);
+        Mail::to($user->email)->send($correo);
         return  response()->json($product, 200);
     }
 

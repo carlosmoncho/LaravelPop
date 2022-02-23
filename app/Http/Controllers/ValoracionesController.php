@@ -85,6 +85,7 @@ class ValoracionesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Valoracion::find($id)->delete();
+        return back();
     }
 }

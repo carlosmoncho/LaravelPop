@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\denunciaMensaje;
 use App\Models\DenunciaM;
 use App\Models\Mensaje;
 use App\Models\Product;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class DenunciasMController extends Controller
 {
@@ -85,6 +88,10 @@ class DenunciasMController extends Controller
     {
         $denuncia = DenunciaM::find($id);
         if ($tipo == 'aceptada'){
+            $mensaje = Mensaje::find($denuncia->mensaje_id);
+            $user = User::find($mensaje->emisor_id);
+            $correo = new denunciaMensaje($mensaje);
+            Mail::to($user->email)->send($correo);
             Mensaje::find($denuncia->mensaje_id)->delete();
         }
         $denuncia->delete();

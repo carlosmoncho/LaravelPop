@@ -28,7 +28,7 @@
                                 @endfor
                             </td>
                             <td>
-                                <a class="crud" href="/deleteProduct/{{$valoracionEcha->id}}"><i class="bi bi-trash"></i></a>
+                                <a class="crud" href="/deleteValoracion/{{$valoracionEcha->id}}"><i class="bi bi-trash"></i></a>
                             </td>
                         </tr>
                     @endforeach
@@ -67,7 +67,7 @@
                                 @endfor
                             </td>
                             <td>
-                                <a class="crud" href="/deleteProduct/{{$valoracionRecibida->id}}"><i class="bi bi-trash"></i></a>
+                                <a class="crud" href="/deleteValoracion/{{$valoracionRecibida->id}}"><i class="bi bi-trash"></i></a>
                             </td>
                         </tr>
                     @endforeach

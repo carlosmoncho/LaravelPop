@@ -30,7 +30,6 @@ class LoginController extends Controller
         $postArray = $request->all();
 
         $postArray['password'] = bcrypt($postArray['password']);
-        $postArray['remember_token'] =  $this->apiToken;
         $user = User::create($postArray);
         $token = $user->createToken($user->email)->plainTextToken;
 

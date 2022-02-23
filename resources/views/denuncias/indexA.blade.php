@@ -22,7 +22,7 @@
                             <td>
                                 <a class="crud" href="/deleteDenunciaA/{{ $denuncia->id }}/aceptada"><i class="bi bi-hand-thumbs-up"></i></a>
                                 <a class="crud" href="/deleteDenunciaA/{{ $denuncia->id }}/NoAceptada"><i class="bi bi-hand-thumbs-down"></i></a>
-                                <a class="crud" href="{{route('denunciaA.show', $denuncia->product->id)}}"><i class="bi bi-eye"></i></a>
+                                <a class="crud" href="{{route('denunciaProducto.show', $denuncia->product->id)}}"><i class="bi bi-eye"></i></a>
                             </td>
                         </tr>
                     @endforeach

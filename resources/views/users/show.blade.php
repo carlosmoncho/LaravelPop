@@ -16,9 +16,9 @@
                                 <b>Email: </b>
                                 <p>{{$user->email}}</p>
                             </div>
-                            <div class="media">
+                            <!--<div class="media">
                                 <iframe src="{{$user->ubicacion}}" style="margin-bottom:20px;  width:300px; height:200px;" allowfullscreen="" loading="lazy"></iframe>
-                            </div>
+                            </div>-->
                         </div>
                     </div>
                 </div>

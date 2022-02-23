@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\denunciaProducto;
 use App\Models\DenunciaA;
 use App\Models\DenunciaM;
 use App\Models\Product;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class DenunciasAController extends Controller
 {
@@ -87,6 +90,10 @@ class DenunciasAController extends Controller
     {
         $denuncia = DenunciaA::find($id);
         if ($tipo == 'aceptada'){
+            $product = Product::find($denuncia->product_id);
+            $user = User::find($product->user_id);
+            $correo = new denunciaProducto($product);
+            Mail::to($user->email)->send($correo);
             Product::find($denuncia->product_id)->delete();
         }
         $denuncia->delete();

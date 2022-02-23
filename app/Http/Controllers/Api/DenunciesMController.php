@@ -3,8 +3,12 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Mail\denunciaMensaje;
 use App\Models\DenunciaM;
+use App\Models\Mensaje;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class DenunciesMController extends Controller
 {

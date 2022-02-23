@@ -7,10 +7,8 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Articulo denunciado</h1>
-    <p>Han denunciado tu articulo:</p>
-    <p>Articulo: {{$data->nombre}}</p>
-    <p>Descripcion: {{$data->descripcion}}</p>
-    <p>Precio: {{$data->precio}}</p>
+<h1>Mensaje denunciado</h1>
+<p>Han denunciado tu mensaje:</p>
+<p>contenido: {{$data->contenido}}</p>
 </body>
 </html>

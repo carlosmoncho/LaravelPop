@@ -1,7 +1,7 @@
 @include('partials.header')
 <div class="d-flex d-flex justify-content-center vh-100">
     <form action="{{route('empleat.store')}}" method='POST' enctype="multipart/form-data">
-        <h1>Edit Categoria</h1>
+        <h1>Create Empleados</h1>
         @csrf
         <div class="form-group">
             <label for="name">Nombre:</label>
@@ -31,7 +31,7 @@
             @endif
         </div>
         <div class="form-group text-center">
-            <button type="submit" class="btn btn-primary" style="padding:8px 100px;margin-top:25px;">Edit categorias</button>
+            <button type="submit" class="btn btn-primary" style="padding:8px 100px;margin-top:25px;">Create</button>
         </div>
     </form>
 </div>

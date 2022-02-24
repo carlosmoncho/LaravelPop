@@ -9,7 +9,7 @@
         <table class="table"  >
             <thead class="thead-dark">
             <tr>
-                <th scope="col">Id</th><th scope="col">Imagen</th><th scope="col">Categoria</th><th scope="col">Total Productos</th><th scope="col">Descripcion</th><th scope="col">Actions <a href="{{route('categoria.create')}}" class="btn btn-sm btn-dark">New</a></th>
+                <th scope="col">Id</th><th scope="col">Imagen</th><th scope="col">Categoría</th><th scope="col">Total Productos</th><th scope="col">Descripción</th><th scope="col">Actions <a href="{{route('categoria.create')}}" class="btn btn-sm btn-dark">New</a></th>
             </tr>
             </thead>
             @if(!empty($categorias))

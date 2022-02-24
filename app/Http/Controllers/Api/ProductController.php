@@ -146,7 +146,7 @@ class ProductController extends Controller
         $product = Product::find($postArray['id']);
         $product->sale = 1;
         $product->comprador_id = $postArray['comprador_id'];
-        $product->save();;
+        $product->save();
         $user = User::find($product->user_id);
         $correo = new compraProducto($product);
         Mail::to($user->email)->send($correo);

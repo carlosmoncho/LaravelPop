@@ -35,7 +35,7 @@ class EmpleatsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(EmpleatsRequest $request)
     {
         $empleat = new Empleats();
         $empleat->name = $request->get('name');

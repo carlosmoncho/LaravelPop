@@ -57,7 +57,7 @@
                             <td>{{ $mensajeRecibido->contenido }}</td>
                             <td>{{ $mensajeRecibido->emisor->name }}</td>
                             <td>
-                                <a class="crud" href="/deleteProduct/{{$mensajeRecibido->id}}"><i class="bi bi-trash"></i></a>
+                                <a class="crud" href="/deleteMensaje/{{$mensajeRecibido->id}}"><i class="bi bi-trash"></i></a>
                             </td>
                         </tr>
                     @endforeach
